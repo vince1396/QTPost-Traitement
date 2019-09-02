@@ -13,3 +13,5 @@ void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector);
 void displayLambdas(std::vector<ArrayPoint> *vector);
 void makeMediane(std::vector<ArrayPoint> * lambdasContainer, std::vector<Point> *arrayMediane);
 void displayVectorPoint(std::vector<Point> *vector);
+void getOptimizedData(std::ifstream &fileFlow, std::vector<std::string> &vector);
+void createPointFromOD(std::vector<std::string> * vector, ArrayPoint *arrayPoint);

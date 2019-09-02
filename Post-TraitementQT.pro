@@ -26,17 +26,21 @@ CONFIG += c++11
 
 SOURCES += \
         ArrayPoint.cpp \
+        FrequenceButton.cpp \
+        Mainwindow.cpp \
         Point.cpp \
+        controller.cpp \
         general.cpp \
         main.cpp \
-        mainwindow.cpp \
         optimizedTxtFile.cpp
 
 HEADERS += \
     ArrayPoint.h \
+    FrequenceButton.h \
+    Mainwindow.h \
     Point.h \
+    controller.h \
     general.h \
-    mainwindow.h \
     optimizedTxtFile.h
 
 FORMS +=

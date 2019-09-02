@@ -4,6 +4,9 @@
 #include <iostream>
 #include "optimizedTxtFile.h"
 #include "ArrayPoint.h"
+#include "ostream"
+#include "iomanip"
+#include "QString"
 
 /*
  * This file contains methods that can be used on the second step of the
@@ -53,9 +56,32 @@ void createPointFromOD(std::vector<std::string> * vector, ArrayPoint *arrayPoint
             }
         }
 
-        point.setF1(stod(tab[0]));
-        point.setLat(stod(tab[1]));
-        point.setLong(stod(tab[2]));
+        QString f1, lon, lat;
+        f1.fromStdString(tab[0]);
+        lat.fromStdString(tab[1]);
+        lon.fromStdString(tab[2]);
+
+        QString test1 = "1.25";
+        QString test2 = "1,25";
+
+        double d1 = test1.toDouble();
+        double d2 = test2.toDouble();
+
+        std::cout << "string tab[1] : " << tab[1] << std::endl;
+        std::cout << "double tab[1] : " << stod(tab[1]) << std::endl;
+        std::cout << "Qstring tab[1] to double : " << lat.toDouble() << std::endl;
+        std::cout << "d1 : " << d1 << std::endl;
+        std::cout << "d2 : " << d2 << "\n" << std::endl;
+
+//        std::cout << tab[0] << std::endl;
+//        std::cout << tab[1] << std::endl;
+//        std::cout << tab[2] << "\n" << std::endl;
+
+        point.setF1(f1.toDouble());
+        point.setLat(lat.toDouble());
+        point.setLong(lon.toDouble());
+
+        //point.displayPoint();
 
         arrayPoint->insert(point);
     }

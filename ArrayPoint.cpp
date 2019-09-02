@@ -52,6 +52,7 @@ void ArrayPoint::makeDistanceCumulee() {
         double yB = this->mArray[i+1].getLat();
         double distance = calculDistance(xA, yA, xB, yB);
         double dc = (distance) + this->mArray[i].getDistanceCumulee();
+        //std::cout << "DC : " << dc << std::endl;
         this->mArray[i+1].setDistanceCumulee(dc);
     }
 }
