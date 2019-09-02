@@ -56,32 +56,9 @@ void createPointFromOD(std::vector<std::string> * vector, ArrayPoint *arrayPoint
             }
         }
 
-        QString f1, lon, lat;
-        f1.fromStdString(tab[0]);
-        lat.fromStdString(tab[1]);
-        lon.fromStdString(tab[2]);
-
-        QString test1 = "1.25";
-        QString test2 = "1,25";
-
-        double d1 = test1.toDouble();
-        double d2 = test2.toDouble();
-
-        std::cout << "string tab[1] : " << tab[1] << std::endl;
-        std::cout << "double tab[1] : " << stod(tab[1]) << std::endl;
-        std::cout << "Qstring tab[1] to double : " << lat.toDouble() << std::endl;
-        std::cout << "d1 : " << d1 << std::endl;
-        std::cout << "d2 : " << d2 << "\n" << std::endl;
-
-//        std::cout << tab[0] << std::endl;
-//        std::cout << tab[1] << std::endl;
-//        std::cout << tab[2] << "\n" << std::endl;
-
-        point.setF1(f1.toDouble());
-        point.setLat(lat.toDouble());
-        point.setLong(lon.toDouble());
-
-        //point.displayPoint();
+        point.setF1(QString().fromStdString(tab[0]).toDouble());
+        point.setLat(QString().fromStdString(tab[1]).toDouble());
+        point.setLong(QString().fromStdString(tab[2]).toDouble());
 
         arrayPoint->insert(point);
     }

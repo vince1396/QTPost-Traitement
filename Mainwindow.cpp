@@ -63,5 +63,10 @@ void MainWindow::selectFile()
 {
     QString filename = QFileDialog::getOpenFileName(this, tr("Select a txt file"), tr("Text files(*.txt"));
 
-    postTraitement(filename.toStdString(), this->sender()->property("id").toInt());
+    QString dirPath = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
+                                                        "/home",
+                                                        QFileDialog::ShowDirsOnly
+                                                        | QFileDialog::DontResolveSymlinks);
+
+    postTraitement(filename.toStdString(), this->sender()->property("id").toInt(), dirPath.toStdString());
 }

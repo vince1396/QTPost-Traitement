@@ -9,4 +9,4 @@
 #include <cmath>
 #include <iomanip>
 
-void postTraitement(std::string filePath, int idFrequence);
+void postTraitement(std::string filePath, int idFrequence, std::string dirPath);

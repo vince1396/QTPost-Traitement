@@ -9,10 +9,12 @@
 #include "ArrayPoint.h"
 #include "optimizedTxtFile.h"
 #include "controller.h"
+#include "QString"
+#include "QFileDialog"
 
 const double lambdasValues[6] = {3.75, 3.33, 1.67, 1.43, 1.30, 1.12}; //Mètres
 
-void postTraitement(std::string filePath, int idFrequence)
+void postTraitement(std::string filePath, int idFrequence, std::string dirPath)
 {
     float time;
     clock_t t1, t2;
@@ -39,7 +41,7 @@ void postTraitement(std::string filePath, int idFrequence)
         lambdasCreation(&arrayPoint, &lambdasContainer, lambdasValues[idFrequence]); // Making lambdas groups, depending on the frequency
         makeMediane(&lambdasContainer, &arrayMediane);
         // =============================================================================================================
-        std::string const path("result/result");
+        std::string const path(dirPath + "/result");
         std::ofstream writting(path, std::ios::out | std::ios::trunc);
 
         if(writting)
