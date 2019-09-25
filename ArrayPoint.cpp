@@ -3,6 +3,8 @@
 #include "general.h"
 
 // =====================================================================================================================
+
+// Constructor
 ArrayPoint::ArrayPoint(int max) {
 
     this->mNbElem = 0;
@@ -10,8 +12,11 @@ ArrayPoint::ArrayPoint(int max) {
     this->ArrayPoint::mArray = new Point[max];
 }
 
+// Destructor
 ArrayPoint::~ArrayPoint() = default;
 // =====================================================================================================================
+// GETTERS
+
 int ArrayPoint::getNbElem() const {
     return this->mNbElem;
 }
@@ -27,6 +32,7 @@ int ArrayPoint::getMax() {
     return this->mMax;
 }
 // =====================================================================================================================
+// Insert a point in array
 void ArrayPoint::insert(const Point &point) {
 
     this->mArray[this->mNbElem] = point;
@@ -42,7 +48,7 @@ void ArrayPoint::displayArray() {
     }
 }
 
-void ArrayPoint::makeDistanceCumulee() {
+void ArrayPoint::makeAccumulatedDistance() {
 
     for(int i = 0; i < this->mMax; i++)
     {
@@ -50,21 +56,23 @@ void ArrayPoint::makeDistanceCumulee() {
         double yA = this->mArray[i].getLat();
         double xB = this->mArray[i+1].getLong();
         double yB = this->mArray[i+1].getLat();
-        double distance = calculDistance(xA, yA, xB, yB);
+        double distance = distanceCalculation(xA, yA, xB, yB);
         double dc = (distance) + this->mArray[i].getDistanceCumulee();
-        //std::cout << "DC : " << dc << std::endl;
         this->mArray[i+1].setDistanceCumulee(dc);
     }
 }
 
-Point ArrayPoint::calculMediane() {
+Point ArrayPoint::medianCalculation() {
 
     int middle = this->getNbElem()/2;
-    Point mediane = this->getPoint(middle);
+    Point median = this->getPoint(middle);
 
-    return mediane;
+    return median;
 }
 // =====================================================================================================================
+// ================================
+//      Sorting Algorithm
+// ================================
 void ArrayPoint::quickSort() {
 
     recQuickSort(0, this->mNbElem-1);

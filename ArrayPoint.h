@@ -4,6 +4,7 @@
 #include <vector>
 #include "Point.h"
 
+// Point container
 class ArrayPoint {
 
 public:
@@ -18,8 +19,8 @@ public:
     // =================================================================================================================
     void insert(const Point& point);
     void displayArray();
-    void makeDistanceCumulee();
-    Point calculMediane();
+    void makeAccumulatedDistance();
+    Point medianCalculation();
     // =================================================================================================================
     void quickSort();
     void recQuickSort(int left, int right);

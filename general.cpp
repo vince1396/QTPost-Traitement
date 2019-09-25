@@ -10,7 +10,7 @@
 const double pi = 4.0*atan(1.0);
 const double rayonTerre = 6356.7523;
 
-double calculDistance(double long1, double lat1, double long2, double lat2)
+double distanceCalculation(double long1, double lat1, double long2, double lat2)
 {
     double dLong1 = convertDegreesToRadians(long1);
     double dLong2 = convertDegreesToRadians(long2);
@@ -46,7 +46,6 @@ void lambdasCreation(ArrayPoint *arrayPoint, std::vector<ArrayPoint> *vector, do
 
     for(int i = 0; i < arrayPoint->getNbElem(); i++)
     {
-        //std::cout << arrayPoint->getPoint(i).getDistanceMetre() << std::endl;
         if(arrayPoint->getPoint(i).getDistanceMetre() > limit || i >= arrayPoint->getNbElem())
         {
             ArrayPoint grappe(static_cast<int>(tempPoint.size()));
@@ -86,7 +85,7 @@ void displayVectorPoint(std::vector<Point> *vector) {
     }
 }
 
-void makeMediane(std::vector<ArrayPoint> *lambdasContainer, std::vector<Point> *arrayMediane) {
+void makeMedian(std::vector<ArrayPoint> *lambdasContainer, std::vector<Point> *arrayMediane) {
 
     for(unsigned long i = 1; i < lambdasContainer->size()-2; i++)
     {

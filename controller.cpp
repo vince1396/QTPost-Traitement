@@ -12,7 +12,7 @@
 #include "QString"
 #include "QFileDialog"
 
-const double lambdasValues[6] = {3.75, 3.33, 1.67, 1.43, 1.30, 1.12}; //Mètres
+const double lambdasValues[6] = {3.75, 3.33, 1.67, 1.43, 1.30, 1.12}; // Meters
 
 void postTraitement(std::string filePath, int idFrequence, std::string dirPath)
 {
@@ -21,8 +21,7 @@ void postTraitement(std::string filePath, int idFrequence, std::string dirPath)
 
     t1 = clock();
 
-    // Absolute path of the file to process
-    //std::string const filePath("/home/vincent/CLionProjects/Post-Traitement/mesures/test.txt");
+    // Open file
     std::ifstream fileFlow(filePath, std::ios::in);
 
     // If file opening went well
@@ -30,16 +29,16 @@ void postTraitement(std::string filePath, int idFrequence, std::string dirPath)
     {
         // =============================================================================================================
         std::vector<std::string> optimizedData;                            // Will contains each line of the optimized txt file
-        std::vector<ArrayPoint> lambdasContainer;                          // Will store ArrayPoint after making lambdas
-        std::vector<Point> arrayMediane;
+        std::vector<ArrayPoint> lambdasContainer;                         // Will store ArrayPoint after making lambdas
+        std::vector<Point> arrayMedian;
 
         getOptimizedData(fileFlow, optimizedData);                         // We store the lines in the container
         ArrayPoint arrayPoint(static_cast<int>(optimizedData.size()));     // Creation of the ArrayPoint containing all the points from the file
         createPointFromOD(&optimizedData, &arrayPoint);                    // Creation of the Points and inserting on the array
         //arrayPoint.displayArray();
-        arrayPoint.makeDistanceCumulee();                                  // Cumulated distance calcul for each point
+        arrayPoint.makeAccumulatedDistance();                                  // Accumulated distance calculation for each point
         lambdasCreation(&arrayPoint, &lambdasContainer, lambdasValues[idFrequence]); // Making lambdas groups, depending on the frequency
-        makeMediane(&lambdasContainer, &arrayMediane);
+        makeMediane(&lambdasContainer, &arrayMedian);
         // =============================================================================================================
         std::string const path(dirPath + "/result");
         std::ofstream writting(path, std::ios::out | std::ios::trunc);
